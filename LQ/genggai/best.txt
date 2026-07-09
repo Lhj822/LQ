@@ -1,0 +1,4 @@
+Seed: 1, Epoch: 0, Results: {}
+Seed: 1, Epoch: 0, Results: {}
+Seed: 1, Epoch: 1, Results: {'Has0_acc_2': 0.4118, 'Has0_F1_score': 0.2402, 'Non0_acc_2': 0.3939, 'Non0_F1_score': 0.2227, 'Mult_acc_5': 0.0735, 'Mult_acc_7': 0.0735, 'MAE': 1.7696, 'Corr': 0.2184}
+Seed: 1, Epoch: 5, Results: {'Has0_acc_2': 0.8382, 'Has0_F1_score': 0.8386, 'Non0_acc_2': 0.8333, 'Non0_F1_score': 0.8339, 'Mult_acc_5': 0.2353, 'Mult_acc_7': 0.2206, 'MAE': 1.2723, 'Corr': 0.6358}

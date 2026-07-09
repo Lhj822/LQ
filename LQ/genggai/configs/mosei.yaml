@@ -1,0 +1,70 @@
+base:
+  project_name: DPDF_LQ
+  ckpt_root: ./ckpt
+  seed: 526
+  lr: 0.00005
+  weight_decay: 0.0008
+  batch_size: 64
+  n_epochs: 60
+  num_workers: 0
+  gpu_id: 0
+  # Disable early stopping so MOSEI training runs for the configured epochs.
+  early_stop_patience: 0
+  early_stop_metric: Non0_F1_score
+  early_stop_mode: max
+  early_stop_min_delta: 0.0001
+
+dataset:
+  datasetName: mosei
+  dataPath: ./dataset/MOSEI/unaligned_50.pkl
+  train_mode: regression
+  # Print a heartbeat while loading large MOSEI pickle files to avoid platform idle timeout.
+  load_heartbeat_interval: 60
+
+model:  
+  bert_pretrained: ./best_cpk/bert
+
+  # Projection Layer Parameters
+  l_proj_dim: 768
+  a_proj_dim: 74
+  v_proj_dim: 35
+  proj_dst_dim: 128
+
+  # Transformer Parameters
+  token_len: 8
+  token_dim: 128
+  l_proj_length: 500
+  a_proj_length: 500
+  v_proj_length: 500
+  proj_input_dim: 128
+  proj_depth: 1
+  proj_heads: 8
+  proj_mlp_dim: 128
+
+  # Text Encoder Parameters
+  token_length: 8
+  l_enc_heads: 8
+  l_enc_mlp_dim: 128
+
+  #DGLQA Layer Parameters
+  DGLQA_depth: 3
+  DGLQA_heads: 8
+  DGLQA_dim_head: 16
+  DGLQA_droup: 0.
+
+  # Fusion Layer Parameters
+  fusion_heads: 8
+  fusion_mlp_dim: 128
+  fusion_layer_depth: 4
+
+  # Dataset-specific auxiliary weights for MOSEI.
+  # MOSI keeps the code defaults, while MOSEI uses weaker auxiliary
+  # constraints to reduce noise amplification on the larger dataset.
+  event_slot_num: 5
+  iteration_num: 2
+  contrastive_weight: 0.003
+  graph_regularization_weight: 0.0008
+  event_regularization_weight: 0.0008
+  counterfactual_weight: 0.0
+  bipolar_weight: 0.005
+  has0_classification_weight: 0.0
